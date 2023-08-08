@@ -16,11 +16,11 @@ The experiment uses `QALD-4`, `WebQuestions`, and `Synthetic queries` as [benchm
 
 **Example of the dataset (DBpedia)**
 
-edge file
+adjTable file
 
-| entity1_id | entity2_id | entity1_name | predicate | entity2_name |
+| entity1_id | predicate_1 | entity2_id | predicate_2 | entity3_id |
 | :--------: | :--------: | :----------: | :-------: | :----------: |
-|  3471751   |  1712537   | Porsche_944  | assembly  |   Germany    |
+|  0   |  country   | 2679443  | isPartOf  |   3777430    |
 
 entity file
 
