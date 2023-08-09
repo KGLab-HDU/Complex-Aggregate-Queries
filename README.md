@@ -31,14 +31,19 @@ entity file
 
 ## Usage
 
-#### Our Methods
+### Our Methods
 
-Our proposed method requires the same parameters. It can be run using the following command:
+Our proposed method requires some parameters. Next, we will follow different steps to illustrate the whole process of our program running.
+#### Collect
 
+This step is to obtain our relevant training data through AQS, where AnchorNode refers to the starting node, predicate refers to the predicate, and TargetType refers to the type of the target node. For example, how many cars are produced in Germany? AnchorNode is Germany. , the predicate is assembly (similar predicates such as produce are also available), TargetType is automobile, Dataset_File_path is the folder path where the dataset is located, and ResultFile_Path is the path where the output result file is located.And the code is running as follow:
 ```
 Collect: Java -jar CollectTrainingData.jar < AnchorNode > < predicate > <TargetType> <Dataset_File_path> < ResultFile_Path >
-Train: Python3 Train.py
-Complex:
 
 ```
+
+This step will output three files, which are the subgraph of the problem (including entity.txt and edge.txt, output under Dataset_File_path), and the data we need to train the model, output under ResultFile_Path .
+
+#### Training
+In this step, we will train our model based on the file output by collect. First, we find the output file under ResultFile_Path (the file name is AnchorNode-predicate-TargetType.txt), and we change the file extension to xlsx or xls, click to see that we have four columns of data. The first column is the error e, the second column is the number of samples S, the third column is the sampling and correctness verification time T<sup>*</sub>sv, and the fourth column is the estimation and accuracy guarantee time T<sup>*</sub>e.
 #### Our Method
