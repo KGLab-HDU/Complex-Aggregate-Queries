@@ -45,5 +45,16 @@ Collect: Java -jar CollectTrainingData.jar < AnchorNode > < predicate > <TargetT
 This step will output three files, which are the subgraph of the problem (including entity.txt and edge.txt, output under Dataset_File_path), and the data we need to train the model, output under ResultFile_Path .
 
 #### Training
-In this step, we will train our model based on the file output by collect. First, we find the output file under ResultFile_Path (the file name is AnchorNode-predicate-TargetType.txt), and we change the file extension to xlsx or xls, click to see that we have four columns of data. The first column is the error e, the second column is the number of samples S, the third column is the sampling and correctness verification time $T^*_{sv}$, and the fourth column is the estimation and accuracy guarantee time T<sup>*</sup><sub>e</sub>.
+In this step, we will train our model based on the file output by collect. First, we find the output file under ResultFile_Path (the file name is AnchorNode-predicate-TargetType.txt), and we change the file extension to xlsx or xls, click to see that we have four columns of data. The first column is the error e, the second column is the number of samples S, the third column is the sampling and correctness verification time $T_{sv}$, and the fourth column is the estimation and accuracy guarantee time T<sub>e</sub>.
+Then we need to create four folders named e-S, e-Tv, e-Tsve, and S-Tsv, and divide the previously obtained quadruple xlsx into corresponding meanings, and name the xls files obtained from the division as corresponding The serial number of the question, here we take 1 as an example (that is, 1.xls) and store it in the corresponding folder. Please note that here you need to insert the first column of each split file as 1 (it has nothing to do with the serial number of the question). The figure below is We get the split file of e-S of question 1.
+![image](https://github.com/KGLab-HDU/Complex-Aggregate-Queries/assets/94584738/c40df50d-8573-40ff-8637-a8b3910d4d84)
+Then we put Train.py in the same directory as e-S and other folders, and run the following code to get the parameter results of our training model in the e-Tsve folder, which is the relevant parameters of the Cost Model.
+```
+Train: Python Train.py
+
+```
+PS: Here you need to modify the range value of i in the py file. The range is the number of questions we need to train. If there are 5 questions to train, you need to change i to 5.
+
+#### Query
+
 #### Our Method
