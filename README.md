@@ -31,6 +31,16 @@ entity file
 
 ## Usage
 
-### Effectiveness and Efficiency Evaluation
+#### Our Methods
 
+Our proposed method requires the same parameters. It can be run using the following command:
+
+```
+Exact: Java -jar Exact.jar < community models > < dataset_name > <dataset_type> <query_node> < queryK > < metapath >
+
+SEA: Java -jar SEA.jar < community models > < dataset_name > <dataset_type> <query_node> < queryK > < metapath >
+
+SEA-size-bounded: Java -jar SEA_size.jar < community models > < dataset_name > <dataset_type> <query_node> < queryK > <Minsize> <Maxsize> < metapath >
+
+```
 #### Our Method
