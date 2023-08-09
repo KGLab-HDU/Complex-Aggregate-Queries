@@ -10,7 +10,7 @@ The experiments have been run on an CentOS Linux release 7.3.1611 computer with 
 
 ## Datasets and Query Workloads
 
-Datasets: [DBpedia dataset](https://drive.google.com/drive/folders/1RTi2L5Kevoj6Xnov-Ibmgz1r-DP9Yh79?usp=drive_link), [Freebase dataset](https://drive.google.com/drive/folders/11LygOGkAxP6hZ7FnP0KFotiKcPTT2C05?usp=drive_link), [Yago dataset](https://drive.google.com/drive/folders/1EsYWH5KgST_v32fyyn1nCHvKUrSWxMJl?usp=drive_link), each one consists of an `entity file` and an `adjTable file`.
+Datasets: [DBpedia dataset](https://drive.google.com/drive/folders/1RTi2L5Kevoj6Xnov-Ibmgz1r-DP9Yh79?usp=drive_link), [Freebase dataset](https://drive.google.com/drive/folders/11LygOGkAxP6hZ7FnP0KFotiKcPTT2C05?usp=drive_link), [Yago dataset](https://drive.google.com/drive/folders/1EsYWH5KgST_v32fyyn1nCHvKUrSWxMJl?usp=drive_link), each one consists of an `entity file` ,an `adjTable file` and a 'simFile file'. The 'entity file' contains all entity of the dataset.The 'adjTable file' contains the relationship between the nodes of the data set, and the predicate is used to describe the relationship more accurately.The 'simFile file' contains the similarity between the predicates used in the experiment and the predicates of the whole graph obtained through the word2Vec method training.
 
 The experiment uses `QALD-4`, `WebQuestions`, and `Synthetic queries` as [benchmarks](https://drive.google.com/drive/folders/19T1Th9G4HcffIhAbaCHqOJPxeWElOy51?usp=sharing) for DBpedia, Freebase, and Yago datasets, respectively.
 
@@ -36,11 +36,9 @@ entity file
 Our proposed method requires the same parameters. It can be run using the following command:
 
 ```
-Exact: Java -jar Exact.jar < community models > < dataset_name > <dataset_type> <query_node> < queryK > < metapath >
-
-SEA: Java -jar SEA.jar < community models > < dataset_name > <dataset_type> <query_node> < queryK > < metapath >
-
-SEA-size-bounded: Java -jar SEA_size.jar < community models > < dataset_name > <dataset_type> <query_node> < queryK > <Minsize> <Maxsize> < metapath >
+Collect: Java -jar CollectTrainingData.jar < AnchorNode > < predicate > <TargetType> <Dataset_File_path> < ResultFile_Path >
+Train: Python3 Train.py
+Complex:
 
 ```
 #### Our Method
