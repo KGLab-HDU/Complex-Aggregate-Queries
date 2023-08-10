@@ -55,6 +55,42 @@ Train: Python Train.py
 ```
 PS: Here you need to modify the range value of i in the py file. The range is the number of questions we need to train. If there are 5 questions to train, you need to change i to 5.
 
-#### Query
+###4 Query
+In the previous section, we obtained the relevant parameters of the simple aggregation query model. The specific results are shown in the figure below. We can see that the data contains multiple columns, among which Factor1, Factor2, and Factor3 are one of the parameters we need to input. We select the appropriate parameters for input by selecting the highest value in the "Accurate rate with 5% percent" column.
+![image](https://github.com/KGLab-HDU/Complex-Aggregate-Queries/assets/94584738/3fa8307d-1dc6-475e-a1bd-f828796223fc)
 
-#### Our Method
+The code is running as follow:
+```
+Query: java -jar Query.jar <subquery's number>
+
+```
+In this process, we first need to place the jar package in the same directory as the dataset, and then enter the above command, and then enter "Taylor formula parameters for a single aggregation query", "operators for complex aggregation queries"," The entity file corresponding to each sub-problem", "the edge file corresponding to each sub-problem", "TargetType", "AnchorNodeId (here refers to the number corresponding to the AnchorNode in the entity file)", "predicate", "starNode (referring to It is the number of rows corresponding to the AnchorNode in the entity file -1)", "the aggregation method corresponding to the complex aggregation query (COUNT, AVG, SUM)", "Dataset", "the corresponding property file".
+### Comparing Methods
+We compare our method with different methods, that are, 'AQS',`EAQ`, `GraB`,`QGA` and `SGQ`.Here we only provide the comparison algorithm code of the simple aggregation query version. If you need to perform complex aggregation queries, you only need to make simple repeated calls to get relevant results. To run these algorithms, we need to run the following commands separately:
+
+```
+AQS: java -jar Approximate-Aggregation-Queries-jar-with-dependencies.jar <specific-entity> <predicate> <target-entity-type> <aggregate-function>
+SGQ: java -jar BaseLineSGQ-jar-with-dependencies.jar <specific-entity> <predicate> <target-entities-type> <aggregate-function>
+GraB: java -jar BaseLineGraB-jar-with-dependencies.jar <specific-entity> <predicate> <target-entities-type> <aggregate-function>
+QGA: java -jar BaseLineQGA-jar-with-dependencies.jar <specific-entity> <predicate> <target-entities-type> <aggregate-function>
+EAQ: python BaseLineEAQ.py <specific-entity> <target-entities-type> <aggregate-function>
+```
+
+For example:
+
+```
+java -jar BaseLineSGQ-jar-with-dependencies.jar California foundationPlace software COUNT
+```
+
+Output
+
+For each method, we output the following statistical results and running time respectively. Here is the output of SGQ for the above query example:
+
+```
+Ground-truth : 124
+---------------------------------------------
+Approximate result : 110
+Relative error (%) : 11.29%
+---------------------------------------------
+Response Time (ms) : 405 ms
+```
